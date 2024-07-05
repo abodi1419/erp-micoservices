@@ -1,0 +1,46 @@
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        web:
+          servlet:
+            handler:
+              HandlerMappingIntrospector: ERROR
+
+storage:
+  path: /var/erp/data
+  temp: /tmp/erp/data
+server:
+  port: 8086
+spring:
+  application:
+    name: inventoryService
+  security:
+    user:
+      password: 9df6cbe8-739b-441f-ad60-bf8d37718d9d
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/inventory_service
+    username: inventory_service
+    password: Asd12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+security:
+  jwt:
+    secret-key: 7a/NJSu6zDQQE9du5fMtDeE2kGHeeVNDtPU6g4i0izk=
+    expiration: 86400000
+    multiple-instances: false
+    renews: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
