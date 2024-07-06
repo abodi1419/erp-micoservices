@@ -40,8 +40,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final RouteRepo routeRepo;
     Log log = LogFactory.getLog(getClass());
 
-    private final UserDetailsService userDetailsService;
-
 
     @SneakyThrows
     @Override
