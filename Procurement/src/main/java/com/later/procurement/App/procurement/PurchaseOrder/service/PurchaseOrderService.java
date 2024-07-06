@@ -29,7 +29,7 @@ import com.later.procurement.CommonModules.currencies.entity.Currency;
 import com.later.procurement.CommonModules.currencies.service.CurrencyService;
 import com.later.procurement.CommonModules.deliveryLocation.entity.DeliveryLocation;
 import com.later.procurement.CommonModules.deliveryLocation.service.DeliveryLocationService;
-import com.later.procurement.CommonModules.vat.record.VatPercentageDto;
+import com.later.procurement.CommonModules.vat.entity.VatPercentage;
 import com.later.procurement.CommonModules.vat.service.VatPercentageService;
 import com.later.procurement.Exception.ApiException;
 import com.later.procurement.Security.Auth.entities.Employee;
@@ -123,11 +123,11 @@ public class PurchaseOrderService {
     private PurchaseOrder validateCreationModel(PurchaseOrderCreationModel purchaseOrderCreationModel, Employee loginUser) throws ApiException {
 // DATA GATHERING
         PurchaseRequest purchaseRequest = purchaseRequestService.findByIdForPurchaseOrder(purchaseOrderCreationModel.getPurchaseRequestId(), loginUser);
-        List<VatPercentageDto> vatPercentages = vatPercentageService.findAll();
-        VatPercentageDto shippingVatPercentage = vatPercentages.stream()
-                .filter(v -> v.id().equals(purchaseOrderCreationModel.getShippingVatPercentage()))
+        List<VatPercentage> vatPercentages = vatPercentageService.findAll();
+        VatPercentage shippingVatPercentage = vatPercentages.stream()
+                .filter(v -> v.getId().equals(purchaseOrderCreationModel.getShippingVatPercentage()))
                 .findFirst().orElse(null);
-        if (shippingVatPercentage == null || !shippingVatPercentage.active()) {
+        if (shippingVatPercentage == null || !shippingVatPercentage.getActive()) {
             throw new ApiException(404, "Vat percentage not found");
         }
         Currency currency = currencyService.findById(purchaseOrderCreationModel.getCurrency());
@@ -233,12 +233,12 @@ public class PurchaseOrderService {
         purchaseOrder.setAdvancePayment(BigDecimal.valueOf(purchaseOrderCreationModel.getAdvancePayment()));
         purchaseOrder.setShippingCost(BigDecimal.valueOf(purchaseOrderCreationModel.getShippingCost()));
         purchaseOrder.setRevision(purchaseOrderCreationModel.getRevision());
-        purchaseOrder.setShippingVatPercentage(shippingVatPercentage.percentage());
-        purchaseOrder.setShippingVatMultiplier(shippingVatPercentage.multiplier());
-        purchaseOrder.setShippingTotal(purchaseOrder.getShippingCost().multiply(shippingVatPercentage.multiplier())
+        purchaseOrder.setShippingVatPercentage(shippingVatPercentage.getPercentage());
+        purchaseOrder.setShippingVatMultiplier(shippingVatPercentage.getMultiplier());
+        purchaseOrder.setShippingTotal(purchaseOrder.getShippingCost().multiply(shippingVatPercentage.getMultiplier())
                 .setScale(2, RoundingMode.HALF_UP));
         purchaseOrder.setShippingVatAmount(purchaseOrder.getShippingCost()
-                .multiply(shippingVatPercentage.multiplier().subtract(BigDecimal.ONE)));
+                .multiply(shippingVatPercentage.getMultiplier().subtract(BigDecimal.ONE)));
         BigDecimal totalItems = BigDecimal.ZERO;
         BigDecimal totalItemVatAmount = BigDecimal.ZERO;
         List<PurchaseOrderDetails> purchaseOrderDetailsList = new ArrayList<>();
@@ -251,8 +251,8 @@ public class PurchaseOrderService {
                     if (prRemaining < purchaseOrderDetailsCreationModel.getQuantity()) {
                         throw new ApiException(400, "Insufficient quantity for item: " + purchaseRequestDetails.getItemName());
                     }
-                    VatPercentageDto vatPercentage = vatPercentages.stream()
-                            .filter(v -> v.id().equals(purchaseOrderDetailsCreationModel.getVatPercentage()))
+                    VatPercentage vatPercentage = vatPercentages.stream()
+                            .filter(v -> v.getId().equals(purchaseOrderDetailsCreationModel.getVatPercentage()))
                             .findFirst().orElse(null);
                     if (vatPercentage == null) {
                         throw new ApiException(404, "Vat percentage not found for item: " + purchaseRequestDetails.getItemName());
@@ -284,13 +284,13 @@ public class PurchaseOrderService {
                     purchaseOrderDetails.setUnitDiscount(BigDecimal.valueOf(purchaseOrderDetailsCreationModel.getUnitDiscount()));
                     purchaseOrderDetails.setSubTotal(calculateItemSubTotal(purchaseOrderDetails));
                     purchaseOrderDetails.setSubTotalVatAmount(purchaseOrderDetails.getSubTotal()
-                            .multiply(vatPercentage.multiplier().subtract(BigDecimal.ONE))
+                            .multiply(vatPercentage.getMultiplier().subtract(BigDecimal.ONE))
                             .setScale(2, RoundingMode.HALF_UP));
                     totalItems = totalItems.add(purchaseOrderDetails.getSubTotal()).setScale(2, RoundingMode.HALF_UP);
                     totalItemVatAmount = totalItemVatAmount.add(purchaseOrderDetails.getSubTotalVatAmount())
                             .setScale(2, RoundingMode.HALF_UP);
-                    purchaseOrderDetails.setVatPercentage(vatPercentage.percentage());
-                    purchaseOrderDetails.setVatMultiplier(vatPercentage.multiplier());
+                    purchaseOrderDetails.setVatPercentage(vatPercentage.getPercentage());
+                    purchaseOrderDetails.setVatMultiplier(vatPercentage.getMultiplier());
                     purchaseOrderDetailsList.add(purchaseOrderDetails);
                 }
             }

@@ -1,11 +1,13 @@
 package com.later.supplierservice.CommonModules.deliveryLocation.service;
 
 
+
 import com.later.supplierservice.CommonModules.deliveryLocation.entity.DeliveryLocation;
 import com.later.supplierservice.Exception.ApiException;
 import com.later.supplierservice.constants.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -53,6 +55,18 @@ public class DeliveryLocationService {
                 }
         );
 
+        return response.getBody().getData();
+    }
+
+    public List<DeliveryLocation> findAllById(List<Long> locationsIds) {
+        HttpEntity<?> httpEntity = new HttpEntity<Object>(locationsIds);
+        ResponseEntity<ApiResponse<List<DeliveryLocation>>> response = restTemplate.exchange(
+                "http://commonService/api/v1/common/delivery-locations/list",
+                HttpMethod.POST,
+                httpEntity,
+                new ParameterizedTypeReference<ApiResponse<List<DeliveryLocation>>>() {
+                }
+        );
         return response.getBody().getData();
     }
 }

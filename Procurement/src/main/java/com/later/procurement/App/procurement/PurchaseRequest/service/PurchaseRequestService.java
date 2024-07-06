@@ -322,7 +322,7 @@ public class PurchaseRequestService {
     }
 
     public List<DeliveryLocation> getDeliveryLocations(Employee loginUser) {
-        return deliveryLocationService.findAll();
+        return deliveryLocationService.findAllById(List.of(2L));
     }
 
     public String approve(Long id, HashMap<String, String> map, Employee loginUser) throws ApiException {

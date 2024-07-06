@@ -19,19 +19,27 @@ public class WarehouseTypeController {
     private final WarehouseTypeService warehouseTypeService;
 
     @GetMapping("list")
-    public ResponseEntity list(@RequestParam(required = false) Long id, @RequestBody(required = false)List<Long> warehouseTypesIds) {
+    public ResponseEntity list(@RequestParam(required = false) Long id) {
         if (id != null) {
             return ok().body(
                     new ApiResponse(true, 200, "Success", warehouseTypeService.findByIdOrElseNull(id))
             );
         }
+
+        return ok().body(
+                new ApiResponse(true, 200, "Success", warehouseTypeService.findAll())
+        );
+    }
+
+    @PostMapping("list")
+    public ResponseEntity listByIds(@RequestBody(required = false)List<Long> warehouseTypesIds) {
         if(warehouseTypesIds != null && !warehouseTypesIds.isEmpty()) {
             return ok().body(
                     new ApiResponse(true, 200, "Success", warehouseTypeService.findAllById(warehouseTypesIds))
             );
         }
         return ok().body(
-                new ApiResponse(true, 200, "Success", warehouseTypeService.findAll())
+                new ApiResponse(true, 200, "Success", List.of())
         );
     }
 }

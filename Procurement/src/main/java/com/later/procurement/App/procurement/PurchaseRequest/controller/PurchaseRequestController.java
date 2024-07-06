@@ -77,7 +77,6 @@ public class PurchaseRequestController {
     @GetMapping("list-delivery-locations")
     public ResponseEntity listDeliveryLocations() throws ApiException {
         Employee loginUser = ((LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmployee();
-
         return ok().body(
                 new ApiResponse(true, 200, "Success",
                         purchaseRequestService.getDeliveryLocations(loginUser))
