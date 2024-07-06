@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/common")
+@RequestMapping("api/v1/supplier/common")
 @RequiredArgsConstructor
 public class CommonController {
 

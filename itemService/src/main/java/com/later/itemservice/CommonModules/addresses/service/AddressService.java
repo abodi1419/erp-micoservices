@@ -25,7 +25,7 @@ public class AddressService {
     public List<City> findAllCities() {
 
         ResponseEntity<ApiResponse<List<City>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list",
+                "http://commonService/api/v1/common/address/city/list",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<City>>>() {}
@@ -36,7 +36,7 @@ public class AddressService {
 
     public City findCityById(Long cityId) throws ApiException {
         ResponseEntity<ApiResponse<City>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list?cityId=" + cityId,
+                "http://commonService/api/v1/common/address/city/list?cityId=" + cityId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<City>>() {}
@@ -50,7 +50,7 @@ public class AddressService {
 
     public List<Country> findAllCountries() {
         ResponseEntity<ApiResponse<List<Country>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list",
+                "http://commonService/api/v1/common/address/city/list",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<Country>>>() {}
@@ -60,7 +60,7 @@ public class AddressService {
 
     public Country findCountryById(Long countryId) throws ApiException {
         ResponseEntity<ApiResponse<Country>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list?id="+countryId,
+                "http://commonService/api/v1/common/address/city/list?id="+countryId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<Country>>() {}
@@ -73,7 +73,7 @@ public class AddressService {
 
     public City findCityByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<City>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list?cityId=" + id,
+                "http://commonService/api/v1/common/address/city/list?cityId=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<City>>() {}
@@ -83,7 +83,7 @@ public class AddressService {
 
     public Country findCountryByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Country>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list?id="+id,
+                "http://commonService/api/v1/common/address/city/list?id="+id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<Country>>() {}
@@ -94,7 +94,7 @@ public class AddressService {
 
     public List<CityModel> findAllCitiesByCountryId(Long countryId) {
         ResponseEntity<ApiResponse<List<CityModel>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/address/common/city/list?countryId="+countryId,
+                "http://commonService/api/v1/common/address/city/list?countryId="+countryId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<CityModel>>>() {}

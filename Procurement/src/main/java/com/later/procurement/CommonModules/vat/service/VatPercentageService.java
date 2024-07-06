@@ -2,11 +2,14 @@ package com.later.procurement.CommonModules.vat.service;
 
 
 import com.later.procurement.CommonModules.vat.entity.VatPercentage;
-import com.later.procurement.CommonModules.vat.mapper.VatPercentageMapper;
-import com.later.procurement.CommonModules.vat.record.VatPercentageDto;
 import com.later.procurement.Exception.ApiException;
+import com.later.procurement.constants.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -14,16 +17,43 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VatPercentageService {
 
-    public List<VatPercentageDto> findAll() {
-        return List.of();
+    private final RestTemplate restTemplate;
+
+    public List<VatPercentage> findAll() {
+        ResponseEntity<ApiResponse<List<VatPercentage>>> response = restTemplate.exchange(
+                "http://commonService/api/v1/common/vat-percentages/list",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<ApiResponse<List<VatPercentage>>>() {
+                }
+        );
+        return response.getBody().getData();
     }
 
     public VatPercentage findById(Long id) throws ApiException {
-        return null;
+        ResponseEntity<ApiResponse<VatPercentage>> response = restTemplate.exchange(
+                "http://commonService/api/v1/common/vat-percentages/list?id=" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<ApiResponse<VatPercentage>>() {
+                }
+        );
+        if (response.getBody().getData() == null) {
+            throw new ApiException(404, "Vat Percentage not found");
+        }
+        return response.getBody().getData();
     }
 
     public VatPercentage findByIdOrElseNull(Long id) throws ApiException {
-        return null;
+        ResponseEntity<ApiResponse<VatPercentage>> response = restTemplate.exchange(
+                "http://commonService/api/v1/common/vat-percentages/list?id=" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<ApiResponse<VatPercentage>>() {
+                }
+        );
+
+        return response.getBody().getData();
     }
 
 

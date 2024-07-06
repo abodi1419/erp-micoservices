@@ -32,6 +32,7 @@ public class CostCenterService {
         );;
         return response.getBody().getData();
     }
+
     public CostCenter findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<CostCenter>> response = restTemplate.exchange(
                 "http://commonService/api/v1/common/cost-centers/list?id="+id,
