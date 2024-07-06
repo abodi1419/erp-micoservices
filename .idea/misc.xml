@@ -7,6 +7,7 @@
     <file type="web" url="file://$PROJECT_DIR$/CommonService" />
     <file type="web" url="file://$PROJECT_DIR$/companyService" />
     <file type="web" url="file://$PROJECT_DIR$/configServer" />
+    <file type="web" url="file://$PROJECT_DIR$/customerService" />
     <file type="web" url="file://$PROJECT_DIR$/ERP" />
     <file type="web" url="file://$PROJECT_DIR$/ErpGateway" />
     <file type="web" url="file://$PROJECT_DIR$/inventoryService" />
