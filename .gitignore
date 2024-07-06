@@ -1,1 +1,41 @@
 /.idea/
+# Ignore IntelliJ IDEA project files
+*.idea/
+*.iws
+*.iml
+*.ipr
+*out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Ignore HELP.md
+HELP.md
+
+# Ignore Gradle files and directories
+.gradle
+*/build/
+*/!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Ignore Spring Tool Suite (STS) files and directories
+*/.apt_generated
+*/.classpath
+*/.factorypath
+*/.project
+*/.settings
+*/.springBeans
+*/.sts4-cache
+*/bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# Ignore NetBeans project files and directories
+*/nbproject/private/
+*/nbbuild/
+*/dist/
+*/nbdist/
+*/.nb-gradle/
+
+# Ignore VS Code project files
+*/.vscode/

@@ -20,6 +20,11 @@ public class AuthFilter implements GatewayFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        if (exchange.getRequest().getURI().getPath().startsWith("/actuator")){
+            log.info("Actuator: Allowed");
+
+            return chain.filter(exchange);
+        }
         return webClientBuilder.build()
                 .get()
                 .uri("http://localhost:8083/api/v1/auth/check")

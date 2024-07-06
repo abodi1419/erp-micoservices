@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AuthServer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/AuthServer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommonService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CommonService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ERP.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ERP.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Procurement.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Procurement.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/erp-microservices.iml" filepath="$PROJECT_DIR$/.idea/erp-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventoryService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventoryService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/itemService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/itemService.main.iml" />
     </modules>
   </component>
 </project>

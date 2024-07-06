@@ -45,6 +45,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             , IOException {
         final String authHeader = request.getHeader("Authorization");
 
+        if(request.getRequestURI().startsWith("/actuator")){
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new ApiException(403, "Access Denied");
         }

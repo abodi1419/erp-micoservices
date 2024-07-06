@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: supplierService
+  cloud:
+    config:
+      uri: http://localhost:8888
+      enabled: true
+
+

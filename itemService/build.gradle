@@ -25,6 +25,7 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2023.0.2")
+	springBootAdminVersion = "3.3.2"
 }
 
 dependencies {
@@ -37,6 +38,9 @@ dependencies {
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+	implementation 'de.codecentric:spring-boot-admin-starter-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	compileOnly "fr.marcwrobel:jbanking:4.2.0"
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -49,6 +53,7 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "de.codecentric:spring-boot-admin-dependencies:$springBootAdminVersion"
 	}
 }
 

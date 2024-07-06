@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/adminServer" />
     <file type="web" url="file://$PROJECT_DIR$/AuthServer" />
     <file type="web" url="file://$PROJECT_DIR$/CommonService" />
+    <file type="web" url="file://$PROJECT_DIR$/companyService" />
+    <file type="web" url="file://$PROJECT_DIR$/conficServer" />
+    <file type="web" url="file://$PROJECT_DIR$/configServer" />
     <file type="web" url="file://$PROJECT_DIR$/ERP" />
     <file type="web" url="file://$PROJECT_DIR$/ErpGateway" />
     <file type="web" url="file://$PROJECT_DIR$/inventoryService" />
     <file type="web" url="file://$PROJECT_DIR$/itemService" />
     <file type="web" url="file://$PROJECT_DIR$/Procurement" />
     <file type="web" url="file://$PROJECT_DIR$/ServiceRegisteryServer" />
+    <file type="web" url="file://$PROJECT_DIR$/supplierService" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

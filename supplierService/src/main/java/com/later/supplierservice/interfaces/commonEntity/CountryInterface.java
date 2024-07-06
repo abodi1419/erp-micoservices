@@ -1,0 +1,9 @@
+package com.later.supplierservice.interfaces.commonEntity;
+
+public interface CountryInterface {
+    Long getCountryId();
+
+    String getCountryName();
+
+    String getCountryNameAr();
+}
