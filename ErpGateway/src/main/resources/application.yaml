@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: ErpGateway
-  cloud:
-    config:
-      uri: http://localhost:8888
-      enabled: true
-
-

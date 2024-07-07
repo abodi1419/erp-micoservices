@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/adminServer" />
-    <file type="web" url="file://$PROJECT_DIR$/AuthServer" />
-    <file type="web" url="file://$PROJECT_DIR$/CommonService" />
-    <file type="web" url="file://$PROJECT_DIR$/companyService" />
-    <file type="web" url="file://$PROJECT_DIR$/configServer" />
-    <file type="web" url="file://$PROJECT_DIR$/customerService" />
+    <file type="web" url="file://$PROJECT_DIR$/admin-server" />
+    <file type="web" url="file://$PROJECT_DIR$/api-gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/auth-server" />
+    <file type="web" url="file://$PROJECT_DIR$/common-service" />
+    <file type="web" url="file://$PROJECT_DIR$/company-service" />
+    <file type="web" url="file://$PROJECT_DIR$/config-server" />
+    <file type="web" url="file://$PROJECT_DIR$/customer-service" />
     <file type="web" url="file://$PROJECT_DIR$/ERP" />
-    <file type="web" url="file://$PROJECT_DIR$/ErpGateway" />
-    <file type="web" url="file://$PROJECT_DIR$/inventoryService" />
-    <file type="web" url="file://$PROJECT_DIR$/itemService" />
-    <file type="web" url="file://$PROJECT_DIR$/Procurement" />
-    <file type="web" url="file://$PROJECT_DIR$/ServiceRegisteryServer" />
-    <file type="web" url="file://$PROJECT_DIR$/supplierService" />
+    <file type="web" url="file://$PROJECT_DIR$/eureka-server" />
+    <file type="web" url="file://$PROJECT_DIR$/inventory-service" />
+    <file type="web" url="file://$PROJECT_DIR$/item-service" />
+    <file type="web" url="file://$PROJECT_DIR$/procurement-service" />
+    <file type="web" url="file://$PROJECT_DIR$/supplier-service" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

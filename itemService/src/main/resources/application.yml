@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: itemService
-  cloud:
-    config:
-      uri: http://localhost:8888
-      enabled: true

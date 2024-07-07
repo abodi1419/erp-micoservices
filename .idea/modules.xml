@@ -3,14 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AuthServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AuthServer_main.iml" group="AuthServer" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommonService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CommonService.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ERP.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ERP.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Procurement.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Procurement.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/companyService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/companyService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/company-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/company-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/customer-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/customer-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/erp-microservices.iml" filepath="$PROJECT_DIR$/.idea/erp-microservices.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventoryService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventoryService.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/itemService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/itemService.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/supplierService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/supplierService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/item-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/item-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/procurement-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/procurement-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/supplier-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/supplier-service.main.iml" />
     </modules>
   </component>
 </project>

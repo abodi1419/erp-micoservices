@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: inventoryService
-  cloud:
-    config:
-      uri: http://localhost:8888
-      enabled: true

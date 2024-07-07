@@ -4,110 +4,110 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/AuthServer" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/admin-server" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/AuthServer" />
+            <option value="$PROJECT_DIR$/admin-server" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CommonService" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/api-gateway" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/CommonService" />
+            <option value="$PROJECT_DIR$/api-gateway" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ERP" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/auth-server" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/ERP" />
+            <option value="$PROJECT_DIR$/auth-server" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ErpGateway" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/common-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/ErpGateway" />
+            <option value="$PROJECT_DIR$/common-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Procurement" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/company-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/Procurement" />
+            <option value="$PROJECT_DIR$/company-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceRegisteryServer" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/config-server" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/ServiceRegisteryServer" />
+            <option value="$PROJECT_DIR$/config-server" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/adminServer" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/customer-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/adminServer" />
+            <option value="$PROJECT_DIR$/customer-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/companyService" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/eureka-server" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/companyService" />
+            <option value="$PROJECT_DIR$/eureka-server" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/configServer" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/inventory-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/configServer" />
+            <option value="$PROJECT_DIR$/inventory-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/inventoryService" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/item-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/inventoryService" />
+            <option value="$PROJECT_DIR$/item-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/itemService" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/procurement-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/itemService" />
+            <option value="$PROJECT_DIR$/procurement-service" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/supplierService" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/supplier-service" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/supplierService" />
+            <option value="$PROJECT_DIR$/supplier-service" />
           </set>
         </option>
       </GradleProjectSettings>
