@@ -21,7 +21,7 @@ public class WarehouseTypeService {
 
     public List<WarehouseType> findAll() {
         ResponseEntity<ApiResponse<List<WarehouseType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/warehouse-types/list",
+                "http://common-service/api/v1/common/warehouse-types/list",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<WarehouseType>>>() {
@@ -32,7 +32,7 @@ public class WarehouseTypeService {
 
     public WarehouseType findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<WarehouseType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/warehouse-types/list?id=" + id,
+                "http://common-service/api/v1/common/warehouse-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<WarehouseType>>() {
@@ -46,7 +46,7 @@ public class WarehouseTypeService {
 
     public WarehouseType findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<WarehouseType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/warehouse-types/list?id=" + id,
+                "http://common-service/api/v1/common/warehouse-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<WarehouseType>>() {
@@ -59,7 +59,7 @@ public class WarehouseTypeService {
 //        MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         HttpEntity<?> httpEntity = new HttpEntity<Object>(warehouseTypeIds);
         ResponseEntity<ApiResponse<List<WarehouseType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/warehouse-types/list",
+                "http://common-service/api/v1/common/warehouse-types/list",
                 HttpMethod.POST,
                 httpEntity,
                 new ParameterizedTypeReference<ApiResponse<List<WarehouseType>>>() {

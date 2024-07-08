@@ -21,7 +21,7 @@ public class VatPercentageService {
 
     public List<VatPercentage> findAll() {
         ResponseEntity<ApiResponse<List<VatPercentage>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/vat-percentages/list",
+                "http://common-service/api/v1/common/vat-percentages/list",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<VatPercentage>>>() {
@@ -32,7 +32,7 @@ public class VatPercentageService {
 
     public VatPercentage findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<VatPercentage>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/vat-percentages/list?id=" + id,
+                "http://common-service/api/v1/common/vat-percentages/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<VatPercentage>>() {
@@ -46,7 +46,7 @@ public class VatPercentageService {
 
     public VatPercentage findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<VatPercentage>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/vat-percentages/list?id=" + id,
+                "http://common-service/api/v1/common/vat-percentages/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<VatPercentage>>() {

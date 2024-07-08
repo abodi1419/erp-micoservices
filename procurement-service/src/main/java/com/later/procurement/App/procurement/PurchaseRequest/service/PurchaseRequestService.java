@@ -208,7 +208,7 @@ public class PurchaseRequestService {
         purchaseRequest.setDisciplineName(discipline.getName());
         purchaseRequest.setDisciplineNameAr(discipline.getNameAr());
         purchaseRequest.setDisciplineCode(discipline.getCode());
-        purchaseRequest.setCreatedById(loginUser.getId());
+        purchaseRequest.setCreatedById(loginUser.getEmployeeId());
         purchaseRequest.setCreatedByName(loginUser.getEmployeeFullName());
         purchaseRequest.setCreatedByNameAr(loginUser.getEmployeeFullNameAr());
         purchaseRequest.setCreatedByCompanyNumber(loginUser.getEmployeeCompanyNumber());
@@ -322,7 +322,7 @@ public class PurchaseRequestService {
     }
 
     public List<DeliveryLocation> getDeliveryLocations(Employee loginUser) {
-        return deliveryLocationService.findAllById(List.of(2L));
+        return deliveryLocationService.findAll();
     }
 
     public String approve(Long id, HashMap<String, String> map, Employee loginUser) throws ApiException {

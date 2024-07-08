@@ -19,35 +19,42 @@ import java.util.List;
 public class DepartmentService {
 
     private final RestTemplate restTemplate;
+
     public List<Department> findAll() {
         ResponseEntity<ApiResponse<List<Department>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/departments/list",
+                "http://common-service/api/v1/common/departments/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<Department>>>() {}
-        );;
+                new ParameterizedTypeReference<ApiResponse<List<Department>>>() {
+                }
+        );
+        ;
         return response.getBody().getData();
     }
 
 
     public List<Department> findAllByCostCenter(Long costCenterId) {
         ResponseEntity<ApiResponse<List<Department>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/departments/list?costCenterId="+costCenterId,
+                "http://common-service/api/v1/common/departments/list?costCenterId=" + costCenterId,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<Department>>>() {}
-        );;
+                new ParameterizedTypeReference<ApiResponse<List<Department>>>() {
+                }
+        );
+        ;
         return response.getBody().getData();
     }
 
     public Department findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Department>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/departments/list?id="+id,
+                "http://common-service/api/v1/common/departments/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Department>>() {}
-        );;
-        if (response.getBody().getData()==null){
+                new ParameterizedTypeReference<ApiResponse<Department>>() {
+                }
+        );
+        ;
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Department not found");
         }
         return response.getBody().getData();
@@ -55,22 +62,26 @@ public class DepartmentService {
 
     public Department findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Department>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/departments/list?id="+id,
+                "http://common-service/api/v1/common/departments/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Department>>() {}
-        );;
+                new ParameterizedTypeReference<ApiResponse<Department>>() {
+                }
+        );
+        ;
         return response.getBody().getData();
     }
 
     public Department findByIdUnderCostCenter(Long id, Long costCenterId) throws ApiException {
         ResponseEntity<ApiResponse<Department>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/departments/list?id="+id+"&costCenterId="+costCenterId,
+                "http://common-service/api/v1/common/departments/list?id=" + id + "&costCenterId=" + costCenterId,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Department>>() {}
-        );;
-        if (response.getBody().getData()==null){
+                new ParameterizedTypeReference<ApiResponse<Department>>() {
+                }
+        );
+        ;
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Department not found");
         }
         return response.getBody().getData();

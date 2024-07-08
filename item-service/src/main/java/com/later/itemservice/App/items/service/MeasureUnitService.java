@@ -59,4 +59,8 @@ public class MeasureUnitService {
     public List<MeasureUnit> getMeasureUnitsForItem() {
         return measureUnitRepo.findAll();
     }
+
+    public MeasureUnit findByIdOrElseNull(Long id) {
+        return measureUnitRepo.findById(id).orElse(null);
+    }
 }

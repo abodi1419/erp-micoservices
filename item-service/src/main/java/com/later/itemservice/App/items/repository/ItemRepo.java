@@ -13,8 +13,10 @@ public interface ItemRepo extends JpaRepository<Item, Long> {
     Integer getCurrentSerial();
 
     @Query("select i from Item i where i.id in :ids and i.disciplineId=:disciplineId")
-    List<Item> findAllByIdAndDiscipline_Id(List<Long> ids, Long disciplineId);
+    List<Item> findAllByIdAndDisciplineId(List<Long> ids, Long disciplineId);
 
     @Query("select i from Item i where i.disciplineId=:disciplineId")
     List<Item> findAllUnderDiscipline(Long disciplineId);
+
+    Item findByIdAndDisciplineId(Long itemId, Long disciplineId);
 }

@@ -41,7 +41,7 @@ public class ItemService {
     }
 
     public List<Item> findAllByIdUnderDiscipline(List<Long> ids, Long disciplineId) {
-        return itemRepo.findAllByIdAndDiscipline_Id(ids, disciplineId);
+        return itemRepo.findAllByIdAndDisciplineId(ids, disciplineId);
     }
 
     public Item findById(Long id) throws ApiException {
@@ -137,5 +137,13 @@ public class ItemService {
 
     public List<Item> findAllUnderDiscipline(Long disciplineId) {
         return itemRepo.findAllUnderDiscipline(disciplineId);
+    }
+
+    public Item findByIdOrElseNull(Long itemId) {
+        return itemRepo.findById(itemId).orElse(null);
+    }
+
+    public Item findByIdUnderDiscipline(Long id, Long disciplineId) {
+        return itemRepo.findByIdAndDisciplineId(id, disciplineId);
     }
 }

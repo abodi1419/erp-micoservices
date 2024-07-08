@@ -1,7 +1,6 @@
 package com.later.procurement.CommonModules.company.costCenter.service;
 
 
-
 import com.later.procurement.CommonModules.company.costCenter.entity.CostCenter;
 import com.later.procurement.Exception.ApiException;
 import com.later.procurement.constants.ApiResponse;
@@ -22,22 +21,26 @@ public class CostCenterService {
 
     public List<CostCenter> findAll() {
         ResponseEntity<ApiResponse<List<CostCenter>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/cost-centers/list",
+                "http://common-service/api/v1/common/cost-centers/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<CostCenter>>>() {}
-        );;
+                new ParameterizedTypeReference<ApiResponse<List<CostCenter>>>() {
+                }
+        );
+        ;
         return response.getBody().getData();
     }
 
     public CostCenter findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<CostCenter>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/cost-centers/list?id="+id,
+                "http://common-service/api/v1/common/cost-centers/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<CostCenter>>() {}
-        );;
-        if(response.getBody().getData()==null){
+                new ParameterizedTypeReference<ApiResponse<CostCenter>>() {
+                }
+        );
+        ;
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Cost center not found");
         }
         return response.getBody().getData();
@@ -45,11 +48,13 @@ public class CostCenterService {
 
     public CostCenter findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<CostCenter>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/cost-centers/list?id="+id,
+                "http://common-service/api/v1/common/cost-centers/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<CostCenter>>() {}
-        );;
+                new ParameterizedTypeReference<ApiResponse<CostCenter>>() {
+                }
+        );
+        ;
         return response.getBody().getData();
     }
 }

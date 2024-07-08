@@ -41,6 +41,7 @@ public class ItemController {
     }
 
 
+    @PreAuthorize("hasAuthority('item.write')")
     @PostMapping("create")
     public ResponseEntity create(@Valid @RequestBody ItemCreationModel itemCreationModel) throws ApiException {
         Employee loginUser = ((LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmployee();
@@ -49,6 +50,7 @@ public class ItemController {
         );
     }
 
+    @PreAuthorize("hasAuthority('item.write')")
     @PostMapping("/update/{id}")
     public ResponseEntity update(@PathVariable Long id, @Valid @RequestBody ItemCreationModel itemCreationModel) throws ApiException {
         Employee loginUser = ((LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmployee();
@@ -56,7 +58,7 @@ public class ItemController {
                 new ApiResponse(true, 200, "Success", itemService.update(id, itemCreationModel, loginUser))
         );
     }
-
+    
     @GetMapping("get-measure-units")
     public ResponseEntity getUnitMeasures() {
         return ok().body(

@@ -1,4 +1,4 @@
-package com.later.procurement.CommonModules.commonController;
+package com.later.procurement.App.procurement.common;
 
 
 import com.later.procurement.DocumentService.service.DocumentService;
@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/supplier/common")
+@RequestMapping("api/v1/procurement/common")
 @RequiredArgsConstructor
 public class CommonController {
 

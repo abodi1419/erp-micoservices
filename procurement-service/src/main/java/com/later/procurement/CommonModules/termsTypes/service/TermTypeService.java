@@ -18,34 +18,41 @@ import java.util.List;
 public class TermTypeService {
 
     final private RestTemplate restTemplate;
+
     public List<TermType> findAll() {
         ResponseEntity<ApiResponse<List<TermType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/term-types/list",
+                "http://common-service/api/v1/common/term-types/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<TermType>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<TermType>>>() {
+                }
         );
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public TermType findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<TermType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/term-types/list?id="+id,
+                "http://common-service/api/v1/common/term-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<TermType>>() {}
+                new ParameterizedTypeReference<ApiResponse<TermType>>() {
+                }
         );
-        if(response.getBody().getData()==null){
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Term type not found");
         }
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public TermType findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<TermType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/term-types/list?id="+id,
+                "http://common-service/api/v1/common/term-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<TermType>>() {}
+                new ParameterizedTypeReference<ApiResponse<TermType>>() {
+                }
         );
 
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 }

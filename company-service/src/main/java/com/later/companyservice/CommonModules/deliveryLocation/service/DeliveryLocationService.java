@@ -22,7 +22,7 @@ public class DeliveryLocationService {
 
     public List<DeliveryLocation> findAll() {
         ResponseEntity<ApiResponse<List<DeliveryLocation>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/delivery-locations/list",
+                "http://common-service/api/v1/common/delivery-locations/list",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<List<DeliveryLocation>>>() {
@@ -33,7 +33,7 @@ public class DeliveryLocationService {
 
     public DeliveryLocation findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<DeliveryLocation>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/delivery-locations/list?id=" + id,
+                "http://common-service/api/v1/common/delivery-locations/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<DeliveryLocation>>() {
@@ -47,7 +47,7 @@ public class DeliveryLocationService {
 
     public DeliveryLocation findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<DeliveryLocation>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/delivery-locations/list?id=" + id,
+                "http://common-service/api/v1/common/delivery-locations/list?id=" + id,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ApiResponse<DeliveryLocation>>() {
@@ -60,7 +60,7 @@ public class DeliveryLocationService {
     public List<DeliveryLocation> findAllById(List<Long> locationsIds) {
         HttpEntity<?> httpEntity = new HttpEntity<Object>(locationsIds);
         ResponseEntity<ApiResponse<List<DeliveryLocation>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/delivery-locations/list",
+                "http://common-service/api/v1/common/delivery-locations/list",
                 HttpMethod.POST,
                 httpEntity,
                 new ParameterizedTypeReference<ApiResponse<List<DeliveryLocation>>>() {

@@ -71,4 +71,12 @@ public class ItemCategoryService {
         return itemCategoryRepo.findAll();
 
     }
+
+    public ItemCategory findByIdOrElseNull(Long itemCategoryId) {
+        return itemCategoryRepo.findById(itemCategoryId).orElse(null);
+    }
+
+    public List<ItemCategory> findAllById(List<Long> itemCategoriesIds) {
+        return itemCategoryRepo.findAllById(itemCategoriesIds);
+    }
 }

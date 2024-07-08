@@ -16,26 +16,28 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class BusinessTypeService {
-final private RestTemplate restTemplate;
+    final private RestTemplate restTemplate;
 
     public List<BusinessType> findAll() {
         ResponseEntity<ApiResponse<List<BusinessType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/business-types/list",
+                "http://common-service/api/v1/common/business-types/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<BusinessType>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<BusinessType>>>() {
+                }
         );
         return response.getBody().getData();
     }
 
     public BusinessType findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<BusinessType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/business-types/list?id="+id,
+                "http://common-service/api/v1/common/business-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<BusinessType>>() {}
+                new ParameterizedTypeReference<ApiResponse<BusinessType>>() {
+                }
         );
-        if(response.getBody().getData()==null){
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Bank not found");
         }
         return response.getBody().getData();
@@ -44,10 +46,11 @@ final private RestTemplate restTemplate;
 
     public BusinessType findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<BusinessType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/business-types/list?id="+id,
+                "http://common-service/api/v1/common/business-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<BusinessType>>() {}
+                new ParameterizedTypeReference<ApiResponse<BusinessType>>() {
+                }
         );
         return response.getBody().getData();
     }

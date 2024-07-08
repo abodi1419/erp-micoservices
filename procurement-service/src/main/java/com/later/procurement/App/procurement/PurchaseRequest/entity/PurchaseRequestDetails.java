@@ -13,7 +13,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@Table(name = "proc_purcahse_request_details")
+@Table(name = "proc_purchase_request_details")
 public class PurchaseRequestDetails implements ItemInterface, UnitOfMeasureInterface, DeliveryLocationInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

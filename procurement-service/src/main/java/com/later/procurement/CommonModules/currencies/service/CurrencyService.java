@@ -1,7 +1,6 @@
 package com.later.procurement.CommonModules.currencies.service;
 
 
-import com.later.procurement.CommonModules.banks.entity.Bank;
 import com.later.procurement.CommonModules.currencies.entity.Currency;
 import com.later.procurement.Exception.ApiException;
 import com.later.procurement.constants.ApiResponse;
@@ -21,32 +20,38 @@ public class CurrencyService {
 
     public List<Currency> findAll() {
         ResponseEntity<ApiResponse<List<Currency>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/currencies/list",
+                "http://common-service/api/v1/common/currencies/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<Currency>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<Currency>>>() {
+                }
         );
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public Currency findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Currency>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/currencies/list?id="+id,
+                "http://common-service/api/v1/common/currencies/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Currency>>() {}
+                new ParameterizedTypeReference<ApiResponse<Currency>>() {
+                }
         );
-        if(response.getBody().getData()==null){
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "currencies not found");
         }
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public Currency findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Currency>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/currencies/list?id="+id,
+                "http://common-service/api/v1/common/currencies/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Currency>>() {}
+                new ParameterizedTypeReference<ApiResponse<Currency>>() {
+                }
         );
 
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 }

@@ -115,4 +115,12 @@ public class EmployeeService {
     public List<EmployeeShortModel> listShort() {
         return employeeRepo.listShort();
     }
+
+    public Employee findByIdOrElseNull(Long id) {
+        return employeeRepo.findById(id).orElse(null);
+    }
+
+    public List<Employee> findAllById(List<Long> employeeIds) {
+        return employeeRepo.findAllById(employeeIds);
+    }
 }

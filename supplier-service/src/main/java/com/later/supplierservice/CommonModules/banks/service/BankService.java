@@ -19,24 +19,27 @@ import java.util.List;
 public class BankService {
 
     private final RestTemplate restTemplate;
+
     public List<Bank> findAll() {
         ResponseEntity<ApiResponse<List<Bank>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/banks/list",
+                "http://common-service/api/v1/common/banks/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<Bank>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<Bank>>>() {
+                }
         );
         return response.getBody().getData();
     }
 
     public Bank findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Bank>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/banks/list?id="+id,
+                "http://common-service/api/v1/common/banks/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Bank>>() {}
+                new ParameterizedTypeReference<ApiResponse<Bank>>() {
+                }
         );
-        if(response.getBody().getData()==null){
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Bank not found");
         }
         return response.getBody().getData();
@@ -44,10 +47,11 @@ public class BankService {
 
     public Bank findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<Bank>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/banks/list?id="+id,
+                "http://common-service/api/v1/common/banks/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<Bank>>() {}
+                new ParameterizedTypeReference<ApiResponse<Bank>>() {
+                }
         );
         return response.getBody().getData();
     }

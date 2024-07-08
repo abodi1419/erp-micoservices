@@ -1,7 +1,6 @@
 package com.later.procurement.CommonModules.certificateTypes.service;
 
 
-import com.later.procurement.CommonModules.banks.entity.Bank;
 import com.later.procurement.CommonModules.certificateTypes.entity.CertificateType;
 import com.later.procurement.Exception.ApiException;
 import com.later.procurement.constants.ApiResponse;
@@ -18,44 +17,52 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CertificateTypeService {
 
-final private RestTemplate restTemplate;
+    final private RestTemplate restTemplate;
+
     public List<CertificateType> findAll() {
         ResponseEntity<ApiResponse<List<CertificateType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/certificate-types/list",
+                "http://common-service/api/v1/common/certificate-types/list",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<CertificateType>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<CertificateType>>>() {
+                }
         );
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public CertificateType findById(Long id) throws ApiException {
         ResponseEntity<ApiResponse<CertificateType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/certificate-types/list?id="+id,
+                "http://common-service/api/v1/common/certificate-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<CertificateType>>() {}
+                new ParameterizedTypeReference<ApiResponse<CertificateType>>() {
+                }
         );
-        if(response.getBody().getData()==null){
+        if (response.getBody().getData() == null) {
             throw new ApiException(404, "Certificate Type not found");
         }
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 
     public List<CertificateType> findAllMandatory() {
         ResponseEntity<ApiResponse<List<CertificateType>>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/certificate-types/list?mandatory=true",
+                "http://common-service/api/v1/common/certificate-types/list?mandatory=true",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<List<CertificateType>>>() {}
+                new ParameterizedTypeReference<ApiResponse<List<CertificateType>>>() {
+                }
         );
         return response.getBody().getData();
     }
 
     public CertificateType findByIdOrElseNull(Long id) throws ApiException {
         ResponseEntity<ApiResponse<CertificateType>> response = restTemplate.exchange(
-                "http://commonService/api/v1/common/certificate-types/list?id="+id,
+                "http://common-service/api/v1/common/certificate-types/list?id=" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<ApiResponse<CertificateType>>() {}
+                new ParameterizedTypeReference<ApiResponse<CertificateType>>() {
+                }
         );
-        return response.getBody().getData();    }
+        return response.getBody().getData();
+    }
 }
