@@ -5,7 +5,6 @@ import com.later.authserver.Security.Auth.entities.Authority;
 import com.later.authserver.Security.Auth.entities.LoginUser;
 import com.later.authserver.Security.entities.LoginToken;
 import com.later.authserver.Security.repositories.LoginTokenRepo;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -21,6 +20,7 @@ import java.security.Key;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -28,16 +28,15 @@ import java.util.function.Function;
 public class JwtService {
 
     private static final Logger log = LoggerFactory.getLogger(JwtService.class);
+    private final LoginTokenRepo loginTokenRepo;
     @Value("${security.jwt.secret-key}")
     private String secretKey;
-
     @Value("${security.jwt.expiration}")
     private long jwtExpiration;
     @Value("${security.jwt.multiple-instances}")
     private boolean allowMultipleInstance;
     @Value("${security.jwt.renews}")
     private boolean renews;
-    private final LoginTokenRepo loginTokenRepo;
 
     public JwtService(LoginTokenRepo loginTokenRepo) {
         this.loginTokenRepo = loginTokenRepo;
@@ -151,5 +150,14 @@ public class JwtService {
             loginToken.setExpiresAt(LocalDateTime.now().plusSeconds(jwtExpiration / 1000));
             loginTokenRepo.save(loginToken);
         }
+    }
+
+    public boolean disableUserTokens(LoginUser loginUser) {
+        List<LoginToken> loginTokens = loginUser.getLoginTokens().stream()
+                .filter(t -> t.getValid() && t.getExpiresAt().isAfter(LocalDateTime.now())).toList();
+        loginTokens.forEach(t -> t.setValid(false));
+        loginTokenRepo.saveAll(loginTokens);
+        return true;
+
     }
 }

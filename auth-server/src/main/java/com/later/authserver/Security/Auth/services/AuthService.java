@@ -1,11 +1,9 @@
 package com.later.authserver.Security.Auth.services;
 
 
-
 import com.later.authserver.Exception.ApiException;
 import com.later.authserver.Security.Auth.entities.Authority;
 import com.later.authserver.Security.Auth.entities.LoginUser;
-import com.later.authserver.Security.Auth.interaces.LoginUserInterface;
 import com.later.authserver.Security.Auth.models.AuthorityModel;
 import com.later.authserver.Security.Auth.models.LoginUserModel;
 import com.later.authserver.Security.Auth.models.validation.LoginModel;
@@ -14,8 +12,6 @@ import com.later.authserver.Security.Auth.repositories.LoginUserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -81,12 +77,13 @@ public class AuthService {
         loginUserModel.setIsNonLocked(loginUser.getIsNonLocked());
         loginUserModel.setResetFlag(loginUser.getResetFlag());
         HashMap<String, AuthorityModel> map = new HashMap<>();
-        for(Authority authority: loginUser.getAuthorities()){
-            if (map.containsKey(authority.getRoute().getRoute())){
+        loginUserModel.setEmployee(loginUser.getEmployee());
+        for (Authority authority : loginUser.getAuthorities()) {
+            if (map.containsKey(authority.getRoute().getRoute())) {
                 List<String> list = new ArrayList<>(map.get(authority.getRoute().getRoute()).getAuthorities());
                 list.add(authority.getAuthority());
                 map.get(authority.getRoute().getRoute()).setAuthorities(list);
-            }else {
+            } else {
                 AuthorityModel authorityModel = new AuthorityModel();
                 authorityModel.setAdmin(authority.getRoute().getAdmin());
                 authorityModel.setActive(authority.getRoute().getActive());

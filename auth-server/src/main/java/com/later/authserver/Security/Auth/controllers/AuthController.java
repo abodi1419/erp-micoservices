@@ -1,16 +1,15 @@
 package com.later.authserver.Security.Auth.controllers;
 
 
+import com.later.authserver.Exception.ApiException;
 import com.later.authserver.Security.Auth.entities.LoginUser;
-import com.later.authserver.Security.Auth.models.LoginUserModel;
-import com.later.authserver.Security.Auth.models.validation.LoginModel;
 import com.later.authserver.Security.Auth.models.LoginResponse;
-import com.later.authserver.Security.Auth.models.validation.LoginUserCreationModel;
 import com.later.authserver.Security.Auth.models.LoginUserShortModel;
+import com.later.authserver.Security.Auth.models.validation.LoginModel;
+import com.later.authserver.Security.Auth.models.validation.LoginUserCreationModel;
 import com.later.authserver.Security.Auth.services.AuthService;
 import com.later.authserver.Security.entities.LoginToken;
 import com.later.authserver.Security.services.JwtService;
-import com.later.authserver.Exception.ApiException;
 import com.later.authserver.constants.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +52,16 @@ public class AuthController {
     @GetMapping("/check")
     public ResponseEntity authenticatedUser() {
         LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok(new ApiResponse<LoginUserShortModel>(true, 200, "Success", new LoginUserShortModel(loginUser), loginUser.getToken(),loginUser.getExpiresAt()));
+        return ResponseEntity.ok(new ApiResponse<LoginUserShortModel>(true, 200, "Success", new LoginUserShortModel(loginUser), loginUser.getToken(), loginUser.getExpiresAt()));
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity logout() {
+        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        jwtService.disableUserTokens(loginUser);
+        return ResponseEntity.ok(new ApiResponse<LoginUserShortModel>(true, 200, "Success",
+                "Successfully logged out"));
+
     }
 
 }

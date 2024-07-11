@@ -31,6 +31,7 @@ public class Route {
     @Column(unique = true)
     @JsonIgnore
     private String moduleSuffix;
+    private String systemName;
 
 
 }

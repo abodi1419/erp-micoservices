@@ -12,9 +12,8 @@ import com.later.procurement.App.procurement.DocumentService.entity.ProcurementD
 import com.later.procurement.App.procurement.DocumentService.service.ProcurementDocumentService;
 import com.later.procurement.App.procurement.PurchaseRequest.entity.PurchaseRequest;
 import com.later.procurement.App.procurement.PurchaseRequest.entity.PurchaseRequestDetails;
-import com.later.procurement.App.procurement.PurchaseRequest.model.PurchaseRequestCreationModel;
-import com.later.procurement.App.procurement.PurchaseRequest.model.PurchaseRequestDetailsCreationModel;
-import com.later.procurement.App.procurement.PurchaseRequest.model.PurchaseRequestShortModel;
+import com.later.procurement.App.procurement.PurchaseRequest.mapper.PurchaseRequestMapper;
+import com.later.procurement.App.procurement.PurchaseRequest.model.*;
 import com.later.procurement.App.procurement.PurchaseRequest.repository.PurchaseRequestDetailsRepo;
 import com.later.procurement.App.procurement.PurchaseRequest.repository.PurchaseRequestRepo;
 import com.later.procurement.CommonModules.company.costCenter.entity.CostCenter;
@@ -62,11 +61,25 @@ public class PurchaseRequestService {
     private final EmployeeService employeeService;
 
 
-    public List<PurchaseRequest> findAll() {
-        return purchaseRequestRepo.findAll();
+    public List<PurchaseRequestListDto> findAll(Employee employee) {
+        return purchaseRequestRepo.listPurchaseRequests(employee.getId());
     }
 
-    public PurchaseRequest findById(Long id, Employee employee) throws ApiException {
+    public PurchaseRequestDto findRecordById(Long id, Employee employee) throws ApiException {
+        PurchaseRequest purchaseRequest = purchaseRequestRepo.findById(id).orElse(null);
+        if (purchaseRequest == null || (purchaseRequest.getCreatedById().equals(employee.getId())
+                && !purchaseRequest.getBuyerId().equals(employee.getId())
+                && purchaseRequest.getApproval().stream()
+                .noneMatch(a -> a.getApproverId().equals(employee.getId()))
+        )) {
+            throw new ApiException(404, "Purchase request not found");
+        }
+        purchaseRequest.setSpecialConditions(procurementApprovalService.checkSpecialConditions(purchaseRequest.getStatus(),
+                SystemCode.PURCHASE_REQUEST.systemCode()));
+        return getRecord(purchaseRequest);
+    }
+
+    private PurchaseRequest findById(Long id, Employee employee) throws ApiException {
         PurchaseRequest purchaseRequest = purchaseRequestRepo.findById(id).orElse(null);
         if (purchaseRequest == null || (purchaseRequest.getCreatedById().equals(employee.getId())
                 && !purchaseRequest.getBuyerId().equals(employee.getId())
@@ -78,6 +91,10 @@ public class PurchaseRequestService {
         purchaseRequest.setSpecialConditions(procurementApprovalService.checkSpecialConditions(purchaseRequest.getStatus(),
                 SystemCode.PURCHASE_REQUEST.systemCode()));
         return purchaseRequest;
+    }
+
+    private PurchaseRequestDto getRecord(PurchaseRequest purchaseRequest) {
+        return PurchaseRequestMapper.toDto(purchaseRequest);
     }
 
 

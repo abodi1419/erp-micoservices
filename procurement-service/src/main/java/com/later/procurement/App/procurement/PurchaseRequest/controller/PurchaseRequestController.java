@@ -3,7 +3,6 @@ package com.later.procurement.App.procurement.PurchaseRequest.controller;
 
 import com.later.procurement.App.procurement.PurchaseRequest.model.PurchaseRequestCreationModel;
 import com.later.procurement.App.procurement.PurchaseRequest.service.PurchaseRequestService;
-import com.later.procurement.CommonModules.company.costCenter.entity.CostCenter;
 import com.later.procurement.Exception.ApiException;
 import com.later.procurement.Security.Auth.entities.Employee;
 import com.later.procurement.Security.Auth.entities.LoginUser;
@@ -29,8 +28,10 @@ public class PurchaseRequestController {
 
     @GetMapping("")
     public ResponseEntity listPurchaseRequests() {
+        Employee loginUser = ((LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmployee();
+
         return ok().body(
-                new ApiResponse(true, 200, "Success", purchaseRequestService.findAll())
+                new ApiResponse(true, 200, "Success", purchaseRequestService.findAll(loginUser))
         );
     }
 
@@ -40,7 +41,7 @@ public class PurchaseRequestController {
 
 
         return ok().body(
-                new ApiResponse(true, 200, "Success", purchaseRequestService.findById(id, loginUser))
+                new ApiResponse(true, 200, "Success", purchaseRequestService.findRecordById(id, loginUser))
         );
     }
 
